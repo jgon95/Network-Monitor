@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import DeviceList from './components/DeviceList';
+import GraphSection from './components/GraphSection';
+import NetworkMap from './components/NetworkMap';
+import './App.css'; // For general styles
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar />
+      <Header />
+      <DeviceList />
+      <GraphSection />
+      <NetworkMap />
     </div>
   );
 }

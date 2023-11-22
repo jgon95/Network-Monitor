@@ -1,0 +1,14 @@
+  .network-map {
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+  }
+  
+  .network-map::after {
+    content: '';
+    position: absolute;
+    left: 175px; /* Adjust this value to where you want the line to start */    
+    top: -500px; /* Align to the bottom of the header */
+    height: 1px;
+    background-color: #000; /* black line */
+    width: calc(100% - 175px); /* Adjust the width based on where the line starts */
+  }
+  
