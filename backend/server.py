@@ -7,10 +7,10 @@ app = Flask(__name__)
 def get_time():
     x = datetime.datetime.now()
     return jsonify({
-        'Name': "geek", 
-        "Age": "22",
-        "Date": x.strftime("%Y-%m-%d %H:%M:%S"),  # Formatting datetime as a string
-        "programming": "python"
+        'Name': "", 
+        "Age": "",
+        "Date": "",  # Formatting datetime as a string
+        "programming": ""
     })
 
 if __name__ == '__main__':
