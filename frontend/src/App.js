@@ -16,6 +16,8 @@ function App() {
       date: "",
       programming: "",
   });
+
+  
   
       // Using useEffect for single rendering
       useEffect(() => {
@@ -33,6 +35,7 @@ function App() {
             })
         );
     }, []);
+    
 
   return (
     <div className="app">
