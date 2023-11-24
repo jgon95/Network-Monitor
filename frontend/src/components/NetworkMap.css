@@ -1,6 +1,15 @@
   .network-map {
     position: relative; /* Needed for absolute positioning of the pseudo-element */
+    height: 50%; /* or any fixed height */
+}
+
+  .api-data {
+    position: absolute;
+    bottom: 150px; /* Aligns the content to the bottom */
+    left: 50%; /* Starts at the center of the container */
+    transform: translateX(-50%); /* Centers the content horizontally */
+    text-align: center; /* Centers text inside the api-data div */
   }
-  
+
   
   
