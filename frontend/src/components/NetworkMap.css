@@ -1,18 +1,8 @@
   .network-map {
     position: relative; /* Needed for absolute positioning of the pseudo-element */
     height: 50%; /* or any fixed height */
-  }
-  
-  .network-map::after {
-    content: '';
-    position: absolute;
-    left: 175px; /* Adjust this value to where you want the line to start */    
-    top: -500px; /* Align to the bottom of the header */
-    height: 1px;
-    background-color: #000; /* black line */
-    width: calc(100% - 175px); /* Adjust the width based on where the line starts */
-  }
-  
+}
+
   .api-data {
     position: absolute;
     bottom: 150px; /* Aligns the content to the bottom */
@@ -20,5 +10,6 @@
     transform: translateX(-50%); /* Centers the content horizontally */
     text-align: center; /* Centers text inside the api-data div */
   }
+
   
   
