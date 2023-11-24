@@ -12,4 +12,13 @@
   background-color: #000; /* black line */
   width: calc(100% - 175px); /* Adjust the width based on where the line starts */
 }
+body {
+  transition: background-color 0.5s;
+  background-color: #fff; /* Light mode background color */
+  color: #000; /* Light mode text color */
+}
 
+body.dark-mode {
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}
