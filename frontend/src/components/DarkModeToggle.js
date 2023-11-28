@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './darkMode.css';
 
 function DarkModeToggle() {
@@ -6,13 +6,9 @@ function DarkModeToggle() {
     const savedMode = localStorage.getItem("darkMode");
     return savedMode === "true" ? true : false;
   });
-  
+
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
+    document.body.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
 
   const toggleDarkMode = () => {
@@ -22,11 +18,8 @@ function DarkModeToggle() {
   };
 
   return (
-    <div className="dark-mode-button-container">
-      <button className="dark-mode-button"onClick={toggleDarkMode}>
-        {darkMode ? "Disable Dark Mode" : "Enable Dark Mode"}
-
-      </button>
+    <div className={`tdnn ${darkMode ? '' : 'day'}`} onClick={toggleDarkMode}>
+      <div className={`moon ${darkMode ? '' : 'sun'}`}></div>
     </div>
   );
 }

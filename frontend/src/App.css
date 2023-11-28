@@ -43,6 +43,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/* ------------------------------------^eric meyer reset^---------------------------------------- */
+
+/* -------------------------------------Css Styling below----------------------------------------- */
 
 /* Main app container styling */
 .app {
@@ -62,7 +65,4 @@ table {
   width: 200px; 
   height: 100%; 
 }
-
-/* This is the darkmode css. When you click the button it sets the styling to these options below*/
-
 
