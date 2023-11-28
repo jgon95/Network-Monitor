@@ -14,3 +14,8 @@ body.dark-mode {
     color: #fff; /* Dark mode text color */
   }
   
+/* Changes the border color when in dark mode*/
+  body.dark-mode .sidebar-class {
+    border-right: 1px solid #fff; /* Solid white border in dark mode */
+  }
+  
