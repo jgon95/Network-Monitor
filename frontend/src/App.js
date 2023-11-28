@@ -39,12 +39,12 @@ function App() {
     
   return (
     <div className="app">
-<DarkModeToggle className="dark-mode-button"/>
       <Sidebar />
       <Header />
       <DeviceList />
       <GraphSection />
       <NetworkMap />
+      <DarkModeToggle className="dark-mode-button"/>
         {data.name} 
         {data.age} 
         {data.date} 
