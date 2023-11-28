@@ -1,20 +1,33 @@
-body,h1,h2,h3{
+/* Resetting default margins and paddings */
+body, h1, h2, h3 {
   margin: 0;
   padding: 0;
 }
-body{
+
+/* Body styling */
+body {
   background-color: rgb(248, 248, 248);
 }
-.dark-mode-button {
-  position: absolute;
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+
+/* Main app container styling */
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; /* Full viewport height */
 }
-body.dark-mode{
-  background-color: rgb(53, 53, 53);
+
+/* Main content area styling */
+.main-content {
+  flex-grow: 1; 
+  overflow-y: auto; 
 }
-.dark-mode-button-container{position: relative;}
+
+/* Sidebar styling */
+.sidebar {
+  width: 200px; 
+  height: 100%; 
+}
+
+/* This is the darkmode css. When you click the button it sets the styling to these options below*/
+
+
