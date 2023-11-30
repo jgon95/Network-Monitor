@@ -1,22 +1,10 @@
-
-/* ORIGINAL BUTTON  */
-/* .dark-mode-button {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-} */
-
 body.dark-mode {
   background-color: #333;
-  color: #fff; 
+  color: #fff;
 }
 
-
 body.dark-mode .sidebar-class {
-  border-right: 1px solid #fff; 
+  border-right: 1px solid #fff;
 }
 
 /* Dark mode button styling moon/sun */
@@ -54,7 +42,7 @@ body.dark-mode .sidebar-class {
   width: var(--toggleBtnRadius);
   height: var(--toggleBtnRadius);
   background: var(--bgColor--night);
-  box-shadow: 
+  box-shadow:
     3em 2.5em 0 0em var(--mooncolor) inset,
     rgba(255, 255, 255, 0.1) 0em -7em 0 -4.5em,
     rgba(255, 255, 255, 0.1) 3em 7em 0 -4.5em,
@@ -68,15 +56,16 @@ body.dark-mode .sidebar-class {
 
 .moon.sun {
   top: 4.5em;
- left: calc(var(--toggleWidth) - var(--toggleBtnRadius) - (var(--toggleWidth) / 8));
+  left: calc(var(--toggleWidth) - var(--toggleBtnRadius) - (var(--toggleWidth) / 8));
   transform: rotate(0deg);
   width: 7em;
   height: 7em;
-  background: #FFBF71; /* Sun color */
-  box-shadow: 
-  0 0 0 1em #FFBF71 inset,
-  0 0 15px 5px #FFDD00, 
-  0 0 20px 10px #FFDD00;
+  background: #FFBF71;
+  /* Sun color */
+  box-shadow:
+    0 0 0 1em #FFBF71 inset,
+    0 0 15px 5px #FFDD00,
+    0 0 20px 10px #FFDD00;
 }
 
 .tdnn.day {

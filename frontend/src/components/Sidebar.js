@@ -3,14 +3,13 @@ import './Sidebar.css';
 import DarkModeToggle from './DarkModeToggle';
 
 function Sidebar() {
-    return (
-      <nav className="sidebar-class">
-<DarkModeToggle className="dark-mode-button" />
-        {/* Sidebar content here */}
-      </nav>
-    );
-  }
+  return (
+    <nav className="sidebar-class">
+      <DarkModeToggle className="dark-mode-button" />
+      {/* Sidebar content here */}
+    </nav>
+  );
+}
 
 
-  export default Sidebar;
-  
+export default Sidebar;

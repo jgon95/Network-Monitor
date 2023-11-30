@@ -1,13 +1,15 @@
 .device-list {
-    display: flex;
-  }
-  
-  .device-list .left-column {
-    flex: 1; /* Adjust flex value as needed */
-    border-right: 2px solid #000; /* Solid black border */
-  }
-  
-  .device-list .right-column {
-    flex: 1; /* Adjust flex value as needed */
-  }
-  
+  display: flex;
+}
+
+.device-list .left-column {
+  flex: 1;
+  /* Adjust flex value as needed */
+  border-right: 2px solid #000;
+  /* Solid black border */
+}
+
+.device-list .right-column {
+  flex: 1;
+  /* Adjust flex value as needed */
+}
