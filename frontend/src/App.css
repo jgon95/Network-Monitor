@@ -1,7 +1,4 @@
-*/
-
-/* eric meyer reset */
-html,
+*/ html,
 body,
 div,
 span,
@@ -131,10 +128,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/* ------------------------------------^eric meyer reset^---------------------------------------- */
-
-/* -------------------------------------Css Styling below----------------------------------------- */
 
 /* Main app container styling */
 .app {
