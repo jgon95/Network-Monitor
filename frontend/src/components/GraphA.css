@@ -1,0 +1,17 @@
+/* GraphA.css */
+
+/* Styling for the container of GraphA */
+.graph-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin: 10px;
+}
+
+/* Styles for the graph elements within GraphB */
+.graph-container .graph-element {
+    /* Define styles for your graph elements here */
+    /* For example: */
+    color: #333;
+    font-size: 16px;
+}

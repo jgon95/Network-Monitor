@@ -1,15 +1,77 @@
+/* DeviceList.css */
 .device-list {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ddd;
+  /* Border for the container */
+  border-radius: 8px;
+  /* Rounded corners for the container */
+  max-height: 300px;
+  /* Fixed height for the container */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  margin: 10px 0;
+  /* Optional: margin for spacing around the container */
+  scrollbar-width: auto;
+  scrollbar-color: #110de7 #a5a1a1;
+}
+
+.device-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.device-list::-webkit-scrollbar-track {
+  background: #a5a1a1;
+}
+
+.device-list::-webkit-scrollbar-thumb {
+  background-color: #110de7;
+  border-radius: 16px;
+  border: 1px outset #05eeff;
+}
+
+.device-list .device-item {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  /* Light border for each item */
+  padding: 10px 0;
+}
+
+.device-list .left-column,
+.device-list .right-column {
+  flex: 1;
+  padding: 0 10px;
 }
 
 .device-list .left-column {
-  flex: 1;
-  /* Adjust flex value as needed */
-  border-right: 2px solid #000;
-  /* Solid black border */
+  border-right: 2px solid #f0f0f0;
+  /* Light border for the left column */
 }
 
 .device-list .right-column {
-  flex: 1;
-  /* Adjust flex value as needed */
+  /* Additional styling if needed */
+}
+
+.device-list .device-item:last-child {
+  margin-bottom: 0;
+  /* No margin for the last item */
+}
+
+/* Style for titles/labels within each column */
+.device-list .column-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style for online status */
+.online-status {
+  color: green;
+  font-weight: bold;
+}
+
+/* Style for offline status */
+.offline-status {
+  color: red;
+  font-weight: bold;
 }

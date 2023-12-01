@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DeviceList from './components/DeviceList';
-import GraphSection from './components/GraphSection';
 import NetworkMap from './components/NetworkMap';
 import './App.css'; // For general styles
+import GraphA from './components/GraphA'; // Import GraphA
+import GraphB from './components/GraphB'; // Import GraphB
 
 function App() {
   // usestate for setting a javascript
@@ -38,19 +39,28 @@ function App() {
 
   return (
     <div className="app">
-      <Sidebar className="sidebar" />
-      <div className="main-content">
+      <Sidebar />
+      <div className="main-container">
         <Header />
-        <DeviceList />
-        <GraphSection />
-        <NetworkMap />
-        {data.name}
-        {data.age}
-        {data.date}
-        {data.programming}
+        <div className="dashboard">
+          <div className="graph-section">
+            <div className="graph">
+              <GraphA type="wan" />
+            </div>
+            <div className="graph">
+              <GraphB type="lan" />
+            </div>
+          </div>
+          <div className="network-section">
+            <NetworkMap />
+          </div>
+          <div className="device-section">
+            <DeviceList />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-export default App
+export default App;
