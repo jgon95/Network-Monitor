@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import './NetworkMap.css';
 
-function NetworkMap({ name, age, date, programming }) {
+function NetworkMap() {
     const [data, setData] = useState({
-        name: "Revival Servers JK",
+        name: "Test Name",
         age: 0,
         date: "11/22/23",
         programming: "PYTHON BACKEND TEST",
@@ -16,6 +16,9 @@ function NetworkMap({ name, age, date, programming }) {
         disk_usage: 0
     });
 
+    const [deviceStatus, setDeviceStatus] = useState({ uptime: "" });
+    const [networkLoss, setNetworkLoss] = useState({ bytes_sent_loss: 0, bytes_recv_loss: 0 });
+
     useEffect(() => {
         const interval = setInterval(() => {
             fetch('/bandwidth')
@@ -25,6 +28,14 @@ function NetworkMap({ name, age, date, programming }) {
             fetch('/system-data')
                 .then(response => response.json())
                 .then(data => setSystemData(data));
+
+            fetch('/device-status')
+                .then(response => response.json())
+                .then(data => setDeviceStatus(data));
+
+            fetch('/network-loss')
+                .then(response => response.json())
+                .then(data => setNetworkLoss(data));
         }, 1000); // Fetch data every second
 
         return () => clearInterval(interval);
@@ -42,6 +53,9 @@ function NetworkMap({ name, age, date, programming }) {
                 <p>CPU Usage: {systemData.cpu_usage}%</p>
                 <p>Memory Usage: {systemData.memory_usage}%</p>
                 <p>Disk Usage: {systemData.disk_usage}%</p>
+                <p>Device Uptime: {deviceStatus.uptime}</p>
+                <p>Network Bytes Sent Loss: {networkLoss.bytes_sent_loss}</p>
+                <p>Network Bytes Received Loss: {networkLoss.bytes_recv_loss}</p>
             </div>
             {/* Network map component or image */}
         </article>
