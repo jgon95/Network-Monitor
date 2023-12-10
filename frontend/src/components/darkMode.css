@@ -1,0 +1,73 @@
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .sidebar-class {
+  border-right: 1px solid #fff;
+}
+
+/* Dark mode button styling moon/sun */
+:root {
+  --toggleHeight: 16em;
+  --toggleWidth: 30em;
+  --toggleBtnRadius: 10em;
+  --bgColor--night: #423966;
+  --toggleBtn-bgColor--night: var(--bgColor--night);
+  --mooncolor: #D9FBFF;
+  --bgColor--day: #c0c0c0;
+  --toggleBtn-bgColor--day: var(--bgColor--day);
+}
+
+.tdnn {
+  margin: 0 auto;
+  font-size: 30%;
+  margin-top: 2em;
+  position: relative;
+  height: var(--toggleHeight);
+  width: var(--toggleWidth);
+  border-radius: var(--toggleHeight);
+  transition: all 500ms ease-in-out;
+  background: var(--bgColor--night);
+  cursor: pointer;
+}
+
+.moon {
+  position: absolute;
+  border-radius: 50%;
+  transition: all 400ms ease-in-out;
+  top: calc(var(--toggleHeight) / 2 - var(--toggleBtnRadius) / 2);
+  left: calc(var(--toggleWidth) / 8);
+  transform: rotate(-75deg);
+  width: var(--toggleBtnRadius);
+  height: var(--toggleBtnRadius);
+  background: var(--bgColor--night);
+  box-shadow:
+    3em 2.5em 0 0em var(--mooncolor) inset,
+    rgba(255, 255, 255, 0.1) 0em -7em 0 -4.5em,
+    rgba(255, 255, 255, 0.1) 3em 7em 0 -4.5em,
+    rgba(255, 255, 255, 0.1) 2em 13em 0 -4em,
+    rgba(255, 255, 255, 0.1) 6em 2em 0 -4.1em,
+    rgba(255, 255, 255, 0.1) 8em 8em 0 -4.5em,
+    rgba(255, 255, 255, 0.1) 6em 13em 0 -4.5em,
+    rgba(255, 255, 255, 0.1) -4em 7em 0 -4.5em,
+    rgba(255, 255, 255, 0.1) -1em 10em 0 -4.5em;
+}
+
+.moon.sun {
+  top: 4.5em;
+  left: calc(var(--toggleWidth) - var(--toggleBtnRadius) - (var(--toggleWidth) / 8));
+  transform: rotate(0deg);
+  width: 7em;
+  height: 7em;
+  background: #FFBF71;
+  /* Sun color */
+  box-shadow:
+    0 0 0 1em #FFBF71 inset,
+    0 0 15px 5px #FFDD00,
+    0 0 20px 10px #FFDD00;
+}
+
+.tdnn.day {
+  background: var(--bgColor--day);
+}

@@ -9,6 +9,7 @@ function NetworkMap() {
         programming: "PYTHON BACKEND TEST",
     });
 
+
     const [bandwidth, setBandwidth] = useState({ bytes_sent: 0, bytes_recv: 0 });
     const [systemData, setSystemData] = useState({
         cpu_usage: 0,

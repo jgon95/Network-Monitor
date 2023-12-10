@@ -1,22 +1,20 @@
-  .network-map {
-    position: relative; /* Needed for absolute positioning of the pseudo-element */
-    height: 50%; /* or any fixed height */
-  }
-  
-  .network-map::after {
-    content: '';
-    position: absolute;
-    left: 175px; /* Adjust this value to where you want the line to start */    
-    top: -500px; /* Align to the bottom of the header */
-    height: 1px;
-    background-color: #000; /* black line */
-    width: calc(100% - 175px); /* Adjust the width based on where the line starts */
-  }
-  
-  .api-data {
-    position: absolute;
-    bottom: 150px; /* Aligns the content to the bottom */
-    left: 50%; /* Starts at the center of the container */
-    transform: translateX(-50%); /* Centers the content horizontally */
-    text-align: center; /* Centers text inside the api-data div */
-  }
+    /* NetworkMap.css */
+    .network-map {
+      position: relative;
+      /* establishes a positioning context for absolute children */
+      height: 300px;
+      /* for example, give it a fixed height */
+      /* Additional styling for the network map (e.g., borders, background, etc.) */
+    }
+
+    .api-data {
+      position: absolute;
+      bottom: 150px;
+      /* distance from the bottom of .network-map */
+      left: 50%;
+      /* horizontally centered */
+      transform: translateX(-50%);
+      /* ensures exact horizontal centering */
+      text-align: center;
+      /* Style for the text or content within api-data */
+    }

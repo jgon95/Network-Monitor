@@ -1,6 +1,8 @@
 .sidebar-class {
   /* Assuming the sidebar takes up the full height of the viewport */
   height: 100vh;
-  width: 175px; /* Adjust the width as needed */
-  border-right: 1px solid #000; /* Solid black border */
+  width: 175px;
+  /* Adjust the width as needed */
+  border-right: 1px solid #000;
+  /* Solid black border */
 }

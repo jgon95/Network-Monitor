@@ -1,14 +1,12 @@
 .header-info {
-  position: relative; /* Needed for absolute positioning of the pseudo-element */
+  position: relative;
+  /* Needed for absolute positioning of the pseudo-element */
+  min-height: 50px;
+  /* or any appropriate value */
+  border-bottom: 1px solid #000;
 }
 
-.header-info::after {
-  content: '';
-  position: absolute;
-  left: 175px; /* Adjust this value to where you want the line to start */
-  
-  top: -800px; /* Align to the bottom of the header */
-  height: 1px;
-  background-color: #000; /* black line */
-  width: calc(100% - 175px); /* Adjust the width based on where the line starts */
+body.dark-mode .header-info {
+  border-bottom: 1px solid #fff;
+  /* White line in dark mode */
 }
