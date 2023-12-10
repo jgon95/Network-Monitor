@@ -10,11 +10,3 @@ body.dark-mode .header-info {
   border-bottom: 1px solid #fff;
   /* White line in dark mode */
 }
-
-body {
-  transition: background-color 0.5s;
-  /* Light mode background color */
-  background-color: #fff;
-  /* Light mode text color */
-  color: #000;
-}

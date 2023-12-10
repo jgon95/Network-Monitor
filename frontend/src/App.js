@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -17,8 +16,6 @@ function App() {
     date: "",
     programming: "",
   });
-
-
 
   // Using useEffect for single rendering
   useEffect(() => {
