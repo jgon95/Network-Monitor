@@ -1,18 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import 'chart.js/auto'; // Import to register the appropriate chart type
+import 'chart.js/auto';
 
 const GraphA = () => {
-  // Initial state for the WAN graph data
-  const [wanData, setWanData] = useState({
-    labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00'],
+  const updateInterval = 2000; // 2 seconds
+  const dataPoints = 6;
+
+  const generateInitialLabels = () => {
+    let labels = [];
+    let now = new Date();
+    for (let i = dataPoints - 1; i >= 0; i--) {
+      let time = new Date(now.getTime() - i * updateInterval);
+      labels.push(time.toTimeString().split(' ')[0]);
+    }
+    return labels;
+  };
+
+  const [networkLossData, setNetworkLossData] = useState({
+    labels: generateInitialLabels(),
     datasets: [
       {
-        label: 'WAN Throughput (Mbps)',
-        data: [120, 110, 150, 170, 160, 180],
+        label: 'Network Bytes Sent Loss',
+        data: Array(dataPoints).fill(0),
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: 'Network Bytes Received Loss',
+        data: Array(dataPoints).fill(0),
+        fill: false,
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderColor: 'rgba(54, 162, 235, 0.5)',
       },
     ],
   });
@@ -20,29 +39,31 @@ const GraphA = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       updateGraphData(); // Function to update data
-    }, 2000); // Update every 2 seconds
+    }, updateInterval); // Update every 2 seconds
 
     return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [wanData]);
+  }, []);
 
   const updateGraphData = () => {
-    // Create new data array based on the current state
-    const newData = wanData.datasets[0].data.slice(); // Clone the current data array
-    newData.shift(); // Remove the first element
+    fetch('/network-loss')
+      .then(response => response.json())
+      .then(data => {
+        const newTime = new Date().toTimeString().split(' ')[0];
 
-    // Generate a new data point
-    const lastDataPoint = newData[newData.length - 1] || 0;
-    const newPoint = Math.max(0, lastDataPoint + (Math.random() - 0.5) * 10);
-    newData.push(newPoint); // Add the new data point to the array
+        setNetworkLossData(prevData => {
+          const updatedSentLossData = [...prevData.datasets[0].data, data.bytes_sent_loss].slice(-dataPoints);
+          const updatedRecvLossData = [...prevData.datasets[1].data, data.bytes_recv_loss].slice(-dataPoints);
+          const updatedLabels = [...prevData.labels, newTime].slice(-dataPoints);
 
-    // Update the state with the new data
-    setWanData({
-      ...wanData,
-      datasets: [{
-        ...wanData.datasets[0],
-        data: newData
-      }]
-    });
+          return {
+            labels: updatedLabels,
+            datasets: [
+              { ...prevData.datasets[0], data: updatedSentLossData },
+              { ...prevData.datasets[1], data: updatedRecvLossData }
+            ]
+          };
+        });
+      });
   };
 
   const options = {
@@ -56,7 +77,7 @@ const GraphA = () => {
 
   return (
     <div className="graph-container">
-      <Line data={wanData} options={options} />
+      <Line data={networkLossData} options={options} />
     </div>
   );
 };

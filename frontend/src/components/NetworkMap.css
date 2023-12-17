@@ -9,7 +9,7 @@
 
     .api-data {
       position: absolute;
-      bottom: -150px;
+      bottom: -160px;
       /* distance from the bottom of .network-map */
       left: 50%;
       /* horizontally centered */

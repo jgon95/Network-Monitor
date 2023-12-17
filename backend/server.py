@@ -37,16 +37,6 @@ network_loss_thread = threading.Thread(target=update_network_loss)
 network_loss_thread.daemon = True
 network_loss_thread.start()
 
-@app.route('/data')
-def get_time():
-    x = datetime.datetime.now()
-    return jsonify({
-        'Name': "", 
-        "Age": "",
-        "Date": "",
-        "programming": ""
-    })
-
 @app.route('/bandwidth')
 def bandwidth():
     net_io = psutil.net_io_counters()
