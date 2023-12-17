@@ -2,13 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 
 function GraphB() {
-    // Initial state for the LAN graph data
-    const [lanData, setLanData] = useState({
-        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00'],
+    const dataPoints = 6;
+    const updateInterval = 2000; // 2 seconds
+
+    const generateInitialLabels = () => {
+        let labels = [];
+        let now = new Date();
+        for (let i = dataPoints - 1; i >= 0; i--) {
+            let time = new Date(now.getTime() - i * updateInterval);
+            labels.push(time.toTimeString().split(' ')[0]);
+        }
+        return labels;
+    };
+
+    const [byteData, setByteData] = useState({
+        labels: generateInitialLabels(),
         datasets: [
             {
-                label: 'LAN Throughput (Mbps)',
-                data: [200, 210, 190, 230, 220, 240],
+                label: 'Bytes Sent (MB)',
+                data: Array(dataPoints).fill(0),
+                fill: false,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132, 0.2)',
+            },
+            {
+                label: 'Bytes Received (MB)',
+                data: Array(dataPoints).fill(0),
                 fill: false,
                 backgroundColor: 'rgb(54, 162, 235)',
                 borderColor: 'rgba(54, 162, 235, 0.2)',
@@ -19,29 +38,33 @@ function GraphB() {
     useEffect(() => {
         const interval = setInterval(() => {
             updateGraphData(); // Function to update data
-        }, 2000); // Update every 2 seconds
+        }, updateInterval); // Update every 2 seconds
 
         return () => clearInterval(interval); // Cleanup interval on unmount
-    }, [lanData]);
+    }, []);
 
     const updateGraphData = () => {
-        // Create new data array based on the current state
-        const newData = lanData.datasets[0].data.slice(); // Clone the current data array
-        newData.shift(); // Remove the first element
+        fetch('/bandwidth')
+            .then(response => response.json())
+            .then(data => {
+                const newTime = new Date().toTimeString().split(' ')[0];
+                const newSentPoint = data.bytes_sent / (1024 * 1024); // Convert bytes to MB
+                const newRecvPoint = data.bytes_recv / (1024 * 1024); // Convert bytes to MB
 
-        // Generate a new data point
-        const lastDataPoint = newData[newData.length - 1] || 0;
-        const newPoint = Math.max(0, lastDataPoint + (Math.random() - 0.5) * 10);
-        newData.push(newPoint); // Add the new data point to the array
+                setByteData(prevData => {
+                    const updatedSentData = [...prevData.datasets[0].data, newSentPoint].slice(-dataPoints);
+                    const updatedRecvData = [...prevData.datasets[1].data, newRecvPoint].slice(-dataPoints);
+                    const updatedLabels = [...prevData.labels, newTime].slice(-dataPoints);
 
-        // Update the state with the new data
-        setLanData({
-            ...lanData,
-            datasets: [{
-                ...lanData.datasets[0],
-                data: newData
-            }]
-        });
+                    return {
+                        labels: updatedLabels,
+                        datasets: [
+                            { ...prevData.datasets[0], data: updatedSentData },
+                            { ...prevData.datasets[1], data: updatedRecvData },
+                        ]
+                    };
+                });
+            });
     };
 
     const options = {
@@ -55,7 +78,7 @@ function GraphB() {
 
     return (
         <div className="graph-container">
-            <Line data={lanData} options={options} />
+            <Line data={byteData} options={options} />
         </div>
     );
 }

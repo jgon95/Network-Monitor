@@ -17,10 +17,10 @@ function App() {
         <div className="dashboard">
           <div className="graph-section">
             <div className="graph">
-              <GraphA type="wan" />
+              <GraphA type="network-loss" />
             </div>
             <div className="graph">
-              <GraphB type="lan" />
+              <GraphB type="bandwidth" />
             </div>
           </div>
           <div className="network-section">
